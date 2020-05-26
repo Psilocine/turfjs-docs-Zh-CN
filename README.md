@@ -1,2 +1,1 @@
-# turfjs-docs-Zh-CN
-turfjs 文档的中文版本
+# Turf.js 中文文档

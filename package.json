@@ -1,0 +1,11 @@
+{
+  "name": "turfjs-docs-Zh-CN",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Psilocine/turfjs-docs-Zh-CN.git",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "license": "GPL"
+}
