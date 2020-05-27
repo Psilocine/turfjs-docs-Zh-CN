@@ -27,7 +27,7 @@ import * as turf from '@turf/turf'
 
 ### 打包创建自定义版本
 1. 在一个文件夹里npm安装需要用到的 Turf 方法
-```terminal
+```javascript
 $ npm install @turf/collect @turf/buffer
 ```
 2. 在该文件夹的根目录创建 main.js，将安装的模块都包含在 modules.exports 中
@@ -38,7 +38,7 @@ module.exports = {
 };
 ```
 3. browserify 打包
-```terminal
+```javascript
 $ browserify main.js -s turf > outTurf.js 
 ```
 4. 大功告成，你可以像使用 Turf 一样使用 ourTurf.js 文件。例如通过script标签加载，并使用 turf 作为全局变量调用
