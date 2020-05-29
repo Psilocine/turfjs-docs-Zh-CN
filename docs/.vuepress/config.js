@@ -22,6 +22,10 @@ module.exports = {
         {
           title: "快速上手",
           path: "/start"
+        },
+        {
+          title: "测量类",
+          path: "/measurement/"
         }
       ]
     }
