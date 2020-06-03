@@ -1,6 +1,6 @@
 ## along
 
-获取入参的线段上指定距离的点。
+接收入参的线段上指定距离的点。
 
 > 值得注意的是，距离是从起点开始计算的，如果距离超过线段的长度，会返回终点的 GeoJSON
 
@@ -14,9 +14,9 @@
 
 **options**
 
-| 属性  | 类型   | 默认值       | 描述                                                       |
-| ----- | ------ | ------------ | ---------------------------------------------------------- |
-| units | String | "kilometers" | 沿线距离的单位，可以是 degrees、radians、miles、kilometers |
+| 属性  | 类型   | 默认值       | 描述                                                         |
+| ----- | ------ | ------------ | ------------------------------------------------------------ |
+| units | String | "kilometers" | 沿线距离的单位，可选的有 degrees、radians、miles、kilometers |
 
 **返回**
 
@@ -47,7 +47,7 @@ var along = turf.along(line, 200, options);
 
 ## area
 
-获取入参的要素或多要素的面积
+接收入参的要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])的面积
 
 > 值得注意的是，该方法应该是传入 polygon 类型的 GeoJSON，如点和线段均为 0
 
@@ -104,7 +104,7 @@ var area = turf.area({
 
 ## bbox
 
-获取入参要素的边界框
+接收入参要素的边界框，是由右上角的坐标和左下角的坐标组成的一位数组
 
 **参数**
 
@@ -130,7 +130,7 @@ var bboxPolygon = turf.bboxPolygon(bbox);
 
 ## bboxPolygon
 
-获取入参 bbox 的等效 GeoJSON
+接收入参 bbox 的等效 GeoJSON
 
 **参数**
 
@@ -148,7 +148,7 @@ var bboxPolygon = turf.bboxPolygon(bbox);
 
 **返回**
 
-[Feature][feature_link]&lt;[Polygon][polygon_link]&gt; - 以 minX、minY、maxX、maxY 的顺序排列
+[Feature][feature_link]&lt;[Polygon][polygon_link]&gt;
 
 **范例**
 
@@ -170,8 +170,456 @@ var poly = turf.bboxPolygon(bbox);
 */
 ```
 
+## bearing
+
+获取点与点之间的地理方位，并与正北方向所形成的角度
+
+> 即以起始点为参照物，终止点的偏移角度
+
+**参数**
+
+| 入参    | 类型                                           | 描述                     |
+| ------- | ---------------------------------------------- | ------------------------ |
+| start   | [Coord][coord_link] \| [GeoJSON][geojson_link] | 起始点，即作为参照物的点 |
+| end     | [Coord][coord_link] \| [GeoJSON][geojson_link] | 终止点，即要对比计算的点 |
+| options | Object                                         | 可配置项                 |
+
+**options**
+
+| 属性  | 类型    | 默认值 | 描述                                                   |
+| ----- | ------- | ------ | ------------------------------------------------------ |
+| final | Boolean | false  | 为 true 只计算最终轴承，即返回的数值介于 0 至 360 之间 |
+
+**返回**
+
+Number - 返回的数值介于 -180 至 180 之间，顺时针为正值
+
+**范例**
+
+```javascript
+var point1 = turf.point([-75.343, 39.984]);
+var point2 = turf.point([-75.534, 39.123]);
+
+var bearing = turf.bearing(point1, point2); // -170.2330491349224
+var bearing = turf.bearing(point1, point2, { final: true }); // 189.6453188611693
+
+// 也可以用经纬度坐标
+var bearing = turf.bearing([-75.343, 39.984], [-75.534, 39.123]); // -170.2330491349224
+```
+
+## center
+
+接收入参要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])的绝对中心点
+
+**参数**
+
+| 入参    | 类型                    | 描述       |
+| ------- | ----------------------- | ---------- |
+| geojson | [GeoJSON][geojson_link] | 一个或多个 |
+| center  | Object                  | 可配置项   |
+
+**options**
+
+| 属性       | 类型   | 默认值 | 描述                                                 |
+| ---------- | ------ | ------ | ---------------------------------------------------- |
+| properties | Object | {}     | 出参 type 为 Point 的 GeoJSON 的 properties 属性对象 |
+
+**返回**
+
+[Feature][feature_link]&lt;[Point][point_link]&gt; - 绝对中心
+
+**范例**
+
+```javascript
+var features = turf.featureCollection([
+  turf.point([-97.522259, 35.4691]),
+  turf.point([-97.502754, 35.463455]),
+  turf.point([-97.508269, 35.463245])
+]);
+
+var center = turf.center(features);
+/*
+{
+  type: "Feature",
+  geometry: {
+    coordinates: [-97.5125065, 35.4661725],
+    type: "point"
+  },
+  properties: {}
+}
+*/
+
+// 单一要素
+var center = turf.center(
+  turf.polygon([
+    [
+      [-97.522259, 35.4691],
+      [-97.502754, 35.463455],
+      [-97.508269, 35.463245],
+      [-97.522259, 35.4691]
+    ]
+  ]),
+  {
+    properties: {
+      desc: "center point"
+    }
+  }
+);
+/*
+{
+  type: "Feature",
+  geometry: {
+    coordinates: [-97.5125065, 35.4661725],
+    type: "point"
+  },
+  properties: {
+    desc: "center point"
+  }
+}
+*/
+```
+
+## centerOfMass
+
+接收入参要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])的质心
+
+**参数**
+
+| 入参       | 类型                    | 描述                            |
+| ---------- | ----------------------- | ------------------------------- |
+| geojson    | [GeoJSON][geojson_link] | 一个或多个                      |
+| properties | Object                  | 出参 GeoJSON 的 properties 属性 |
+
+**返回**
+
+[Feature][feature_link]&lt;[Point][point_link]&gt; - 质心
+
+**范例**
+
+```javascript
+var polygon = turf.polygon([
+  [
+    [-81, 41],
+    [-88, 36],
+    [-84, 31],
+    [-80, 33],
+    [-77, 39],
+    [-81, 41]
+  ]
+]);
+
+var center = turf.centerOfMass(polygon, {
+  desc: "center of mass"
+});
+/*
+{
+  type: "Feature",
+  geometry: {
+    type: "Point",
+    coordinates: [-82.3109243697479, 36.134453781512605]
+  },
+  properties: {
+    desc: "center of mass"
+  }
+}
+*/
+```
+
+## centroid
+
+接收入参要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])的矩心
+
+**参数**
+
+| 入参       | 类型                    | 描述                            |
+| ---------- | ----------------------- | ------------------------------- |
+| geojson    | [GeoJSON][geojson_link] | 一个或多个                      |
+| properties | Object                  | 出参 GeoJSON 的 properties 属性 |
+
+**返回**
+
+[Feature][feature_link]&lt;[Point][point_link]&gt; - 矩心
+
+**范例**
+
+```javascript
+var polygon = turf.polygon([
+  [
+    [-81, 41],
+    [-88, 36],
+    [-84, 31],
+    [-80, 33],
+    [-77, 39],
+    [-81, 41]
+  ]
+]);
+
+var centroid = turf.centroid(polygon, {
+  desc: "centroid"
+});
+/*
+{
+  type: "Feature",
+  geometry: {
+    type: "Point",
+    coordinates: [-82, 36]
+  },
+  properties: {
+    desc: "centroid"
+  }
+}
+*/
+```
+
+## destination
+
+获取以入参的点为参照物，通过指定单位的距离计算出目标点的位置
+
+> 若以 degress 为单位，将使用 Haversine 公式说明整体曲率
+
+**参数**
+
+| 入参     | 类型                                           | 描述                  |
+| -------- | ---------------------------------------------- | --------------------- |
+| origin   | [Coord][coord_link] \| [GeoJSON][geojson_link] | 起始点，即参照物      |
+| distance | Number                                         | 和起始点的距离        |
+| bearing  | Number                                         | 介于 -180 至 180 之间 |
+| options  | Object                                         | 可配置项              |
+
+**options**
+
+| 属性       | 类型   | 默认值       | 描述                                                 |
+| ---------- | ------ | ------------ | ---------------------------------------------------- |
+| units      | String | "kilometers" | 单位，可选的有 degrees、radians、miles、kilometers   |
+| properties | Object | {}           | 出参 type 为 Point 的 GeoJSON 的 properties 属性对象 |
+
+**返回**
+
+[Feature][feature_link]&lt;[Point][point_link]&gt; - 目标点
+
+**范例**
+
+```javascript
+var point = turf.point([-75.343, 39.984]);
+var distance = 50;
+var bearing = 90;
+var options = { units: "miles" };
+
+var destination = turf.destination(point, distance, bearing, options);
+/*
+{
+  type: "Feature",
+  geometry: {
+    type: "Point",
+    coordinates: [-74.39858826442095, 39.98016766669771]
+  },
+  properties: {}
+}
+*/
+```
+
+## distance
+
+计算两点之间的距离
+
+> 若以 degress 为单位，将使用 Haversine 公式说明整体曲率
+
+**参数**
+
+| 入参    | 类型                | 描述     |
+| ------- | ------------------- | -------- |
+| from    | [Coord][coord_link] | 起始点   |
+| to      | [Coord][coord_link] | 目标点   |
+| options | Object              | 可配置项 |
+
+**options**
+
+| 属性  | 类型   | 默认值       | 描述                                               |
+| ----- | ------ | ------------ | -------------------------------------------------- |
+| units | String | "kilometers" | 单位，可选的有 degrees、radians、miles、kilometers |
+
+**返回**
+Number - 两点的距离
+
+**范例**
+
+```javascript
+var from = turf.point([-75.343, 39.984]);
+var to = turf.point([-75.534, 39.123]);
+var options = { units: "miles" };
+
+var distance = turf.distance(from, to, options); // 60.35329997171415
+```
+
+## envelope
+
+接收任意要素或多要素，返回包含所有顶点的 type 为 Polygon 的矩形 GeoJson
+
+> 值得注意的是，矩形是正四边形，所以会去包含更靠外的要素顶点，从而保证所有的要素都在矩形内
+
+**参数**
+
+| 入参    | 类型                    | 描述       |
+| ------- | ----------------------- | ---------- |
+| geojson | [GeoJSON][geojson_link] | 一个或多个 |
+
+**返回**
+[Feature][feature_link]&lt;[Polygon][polygon_link]&gt; - 包含所有入参要素顶点的 GeoJSON
+
+**范例**
+
+```javascript
+var features = turf.featureCollection([
+  turf.point([-75.343, 39.984], { name: "Location A" }),
+  turf.point([-75.833, 39.284], { name: "Location B" }),
+  turf.point([-75.534, 39.123], { name: "Location C" })
+]);
+
+var enveloped = turf.envelope(features);
+/*
+{
+  type: "Feature",
+  geometry: {
+    type: "Polygon",
+    coordinates: [
+      [
+        [-75.833, 39.123],
+        [-75.343, 39.123],
+        [-75.343, 39.984],
+        [-75.833, 39.984],
+        [-75.833, 39.123]
+      ]
+    ]
+  },
+  properties: {}
+}
+*/
+
+// 包含更靠外的要素，第四个点[-75.12, 38.4]比第三个点[-75.534, 39.123]有更小的维度，所以第三个点不在矩形的边上
+var features = turf.featureCollection([
+  turf.point([-75.343, 39.984], { name: "Location A" }),
+  turf.point([-75.833, 39.284], { name: "Location B" }),
+  turf.point([-75.534, 39.123], { name: "Location C" }),
+  turf.point([-75.12, 38.4], { name: "Location D" })
+]);
+var enveloped = turf.envelope(features);
+```
+
+## length
+
+通过特定的单位接收入参 GeoJSON 的长度
+
+> type 为(Multi)Point 的 GeoJSON 长度为 0
+
+**参数**
+
+| 入参    | 类型                    | 描述               |
+| ------- | ----------------------- | ------------------ |
+| geojson | [GeoJSON][geojson_link] | 需要测量的 GeoJSON |
+| options | Object                  | 可配置项           |
+
+**options**
+
+| 属性  | 类型   | 默认值       | 描述                                               |
+| ----- | ------ | ------------ | -------------------------------------------------- |
+| units | String | "kilometers" | 单位，可选的有 degrees、radians、miles、kilometers |
+
+**返回**
+Number - 长度
+
+**范例**
+
+```javascript
+var line = turf.lineString([
+  [115, -32],
+  [131, -22],
+  [143, -25],
+  [150, -34]
+]);
+var length = turf.length(line, { units: "miles" }); // 2738.9663893575207
+```
+
+## midpoint
+
+接收两个点，通过地球的曲率计算出中点，并返回该中点
+
+**参数**
+
+| 入参   | 类型                                           | 描述     |
+| ------ | ---------------------------------------------- | -------- |
+| point1 | [Coord][coord_link] \| [GeoJSON][geojson_link] | 第一个点 |
+| point2 | [Coord][coord_link] \| [GeoJSON][geojson_link] | 第二个点 |
+
+**返回**
+[Feature][feature_link]&lt;[Point][point_link]&gt;
+
+**范例**
+
+```javascript
+var point1 = turf.point([144.834823, -37.771257]);
+var point2 = turf.point([145.14244, -37.830937]);
+
+var midpoint = turf.midpoint(point1, point2);
+/*
+{
+  type: "Feature",
+  geometry: {
+    type: "Point",
+    coordinates: [144.98856936202512, -37.801196981553204]
+  },
+  properties: {}
+}
+*/
+```
+
+## pointOnFeature
+
+接收入参的要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])，返回一个保证在要素表面的 type 为 Point 的 GeoJson
+
+> 值得注意的是，返回的点要素是固定的，并非随机
+
+**参数**
+
+| 入参    | 类型                    | 描述       |
+| ------- | ----------------------- | ---------- |
+| geojson | [GeoJSON][geojson_link] | 一个或多个 |
+
+**返回**
+[Feature][feature_link]&lt;[Point][point_link]&gt;
+
+**范例**
+
+```javascript
+var polygon = turf.polygon([
+  [
+    [116, -36],
+    [131, -32],
+    [146, -43],
+    [155, -25],
+    [133, -9],
+    [111, -22],
+    [116, -36]
+  ]
+]);
+
+var pointOnPolygon = turf.pointOnFeature(polygon);
+
+/*
+{
+  type: "Feature",
+  geometry: {
+    type: "Point",
+    coordinates: [133, -26]
+  },
+  properties: {}
+}
+*/
+```
+
 [geojson_link]: https://tools.ietf.org/html/rfc7946#section-3
 [feature_link]: https://tools.ietf.org/html/rfc7946#section-3.2
+[featurecollection_link]: https://tools.ietf.org/html/rfc7946#section-3.3
 [point_link]: https://tools.ietf.org/html/rfc7946#section-3.1.2
 [polygon_link]: https://tools.ietf.org/html/rfc7946#section-3.1.6
 [bbox_link]: https://tools.ietf.org/html/rfc7946#section-5
+[coord_link]: https://tools.ietf.org/html/rfc7946#section-3.1.1
