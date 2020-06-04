@@ -7,20 +7,27 @@ module.exports = {
     lineNumbers: false // 代码块显示行号
   },
   themeConfig: {
+    lastUpdated: "Last Updated",
     nav: [
       { text: "Home", link: "/" },
       { text: "Github", link: "https://github.com/Psilocine/turfjs-docs-Zh-CN" },
       { text: "官方文档", link: "http://turfjs.org/" }
     ],
-    sidebar: [
-      {
-        title: "快速上手",
-        path: "/start"
-      },
-      {
-        title: "简介",
-        path: "/intro"
-      }
-    ]
+    sidebar: {
+      "/": [
+        {
+          title: "简介",
+          path: "/intro"
+        },
+        {
+          title: "快速上手",
+          path: "/start"
+        },
+        {
+          title: "测量类",
+          path: "/measurement/"
+        }
+      ]
+    }
   }
 };
