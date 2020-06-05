@@ -26,6 +26,14 @@ module.exports = {
         {
           title: "测量类",
           path: "/measurement/"
+        },
+        {
+          title: "关系判断类",
+          path: "/booleans/"
+        },
+        {
+          title: "单位换算类",
+          path: "/unit_conversion/"
         }
       ]
     }
