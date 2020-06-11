@@ -8,10 +8,10 @@
 
 **参数**
 
-| 入参    | 类型                                                 | 描述                |
-| ------- | ---------------------------------------------------- | ------------------- |
-| line    | ([Geometry][geometry_link]\|[Feature][feature_link]) | Geometry 或 Feature |
-| options | Object                                               | 可配置项            |
+| 入参    | 类型                                               | 描述                |
+| ------- | -------------------------------------------------- | ------------------- |
+| line    | [Geometry][geometry_link]\|[Feature][feature_link] | Geometry 或 Feature |
+| options | Object                                             | 可配置项            |
 
 **options**
 
@@ -21,7 +21,7 @@
 
 **返回**
 
-([Geometry][geometry_link]\|[Feature][feature_link])
+[Geometry][geometry_link]\|[Feature][feature_link]
 
 **范例**
 

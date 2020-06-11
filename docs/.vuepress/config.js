@@ -30,6 +30,10 @@ module.exports = {
         {
           title: "坐标变换",
           path: "/coordinate_mutation/"
+        },
+        {
+          title: "要素变换",
+          path: "/transformation/"
         }
         // {
         //   title: "关系判断类",
