@@ -28,13 +28,21 @@ module.exports = {
           path: "/measurement/"
         },
         {
-          title: "关系判断类",
-          path: "/booleans/"
+          title: "坐标变换",
+          path: "/coordinate_mutation/"
         },
         {
-          title: "单位换算类",
-          path: "/unit_conversion/"
+          title: "要素变换",
+          path: "/transformation/"
         }
+        // {
+        //   title: "关系判断类",
+        //   path: "/booleans/"
+        // },
+        // {
+        //   title: "单位换算类",
+        //   path: "/unit_conversion/"
+        // }
       ]
     }
   }
