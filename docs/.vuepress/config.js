@@ -34,6 +34,10 @@ module.exports = {
         {
           title: "要素变换",
           path: "/transformation/"
+        },
+        {
+          title: "特征变换",
+          path: "/feature_conversion/"
         }
         // {
         //   title: "关系判断类",
