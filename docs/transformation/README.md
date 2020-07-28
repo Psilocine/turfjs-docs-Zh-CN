@@ -195,7 +195,7 @@ var circle = turf.circle(center, radius, options);
 
 > npm install @turf/clone
 
-接收任意要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])，返回该要素的深拷贝对象，包括可能的 Foreign Members(即拷贝不是 GeoJSON 必须属性的属性)。且比常见的 JSON.parse + JSON.stringify 组合方法快约 3-5 倍
+接收任意要素([Feature][feature_link])或要素集([FeatureCollection][featurecollection_link])，返回该要素的深拷贝对象，包括可能的 Foreign Members(即拷贝不是 GeoJSON 必须属性的属性)。且比常见的 JSON.parse + JSON.stringify 组合方法快约 3-5 倍
 
 **参数**
 
@@ -296,7 +296,7 @@ var hull = turf.concave(points, options);
 
 > npm install @turf/convex
 
-接收要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])，返回以接收的要素为顶点的 type 为 Polygon 的凸型要素
+接收要素([Feature][feature_link])或要素集([FeatureCollection][featurecollection_link])，返回以接收的要素为顶点的 type 为 Polygon 的凸型要素
 
 **参数**
 
@@ -981,7 +981,7 @@ var union = turf.union(poly1, poly2);
 
 接收 type 为 point 的要素集和边界框 bbox，并返回 Voronoi 多边形的要素集
 
-> 值得注意的是，voronoi 是对空间平面的一种剖分
+> 值得注意的是，[voronoi](https://baike.baidu.com/item/%E6%B3%B0%E6%A3%AE%E5%A4%9A%E8%BE%B9%E5%BD%A2) 是对空间平面的一种分割算法：对离散数据点合理地连成三角网
 
 **参数**
 

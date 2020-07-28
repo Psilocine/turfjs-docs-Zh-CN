@@ -1,4 +1,4 @@
-# coordinate_mutation
+# coordinate mutation
 
 ## cleanCoords
 
@@ -198,7 +198,7 @@ turf.round(120.4321, 2);
 
 > npm install @turf/truncate
 
-接收入参要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])，返回精确后的要素
+接收入参要素([Feature][feature_link])或要素集([FeatureCollection][featurecollection_link])，返回精确后的要素
 
 **参数**
 

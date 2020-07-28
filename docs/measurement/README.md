@@ -53,7 +53,7 @@ var along = turf.along(line, 200, options);
 
 > npm install @turf/area
 
-接收入参的要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])，计算并返回它们的面积
+接收入参的要素([Feature][feature_link])或要素集([FeatureCollection][featurecollection_link])，计算并返回它们的面积
 
 > 值得注意的是，该方法应该是传入 polygon 类型的 GeoJSON，即 Point 点类型和 LineString 线段类型均为 0
 
@@ -225,7 +225,7 @@ var bearing = turf.bearing([-75.343, 39.984], [-75.534, 39.123]); // -170.233049
 
 > npm install @turf/center
 
-接收入参要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])，计算并返回它们的绝对中心点
+接收入参要素([Feature][feature_link])或要素集([FeatureCollection][featurecollection_link])，计算并返回它们的绝对中心点
 
 **参数**
 
@@ -299,7 +299,7 @@ var center = turf.center(
 
 > npm install @turf/center-of-mass
 
-接收入参要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])，计算并返回它们的质心
+接收入参要素([Feature][feature_link])或要素集([FeatureCollection][featurecollection_link])，计算并返回它们的质心
 
 **参数**
 
@@ -347,7 +347,7 @@ var center = turf.centerOfMass(polygon, {
 
 > npm install @turf/centroid
 
-接收入参要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])，计算并返回它们的矩心
+接收入参要素([Feature][feature_link])或要素集([FeatureCollection][featurecollection_link])，计算并返回它们的矩心
 
 **参数**
 
@@ -480,7 +480,7 @@ var distance = turf.distance(from, to, options); // 60.35329997171415
 
 > npm install @turf/envelope
 
-接收任意要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])，返回包含所有顶点的 type 为 Polygon 的矩形 GeoJSON
+接收任意要素([Feature][feature_link])或要素集([FeatureCollection][featurecollection_link])，返回包含所有顶点的 type 为 Polygon 的矩形 GeoJSON
 
 > 值得注意的是，矩形是正四边形，所以会去包含更靠外的要素顶点，从而保证所有的要素都在矩形内
 
@@ -610,7 +610,7 @@ var midpoint = turf.midpoint(point1, point2);
 
 > npm install @turf/point-on-feature
 
-接收入参的要素([Feature][feature_link])或多要素([FeatureCollection][featurecollection_link])，返回一个保证在要素表面的 type 为 Point 的 GeoJSON
+接收入参的要素([Feature][feature_link])或要素集([FeatureCollection][featurecollection_link])，返回一个保证在要素表面的 type 为 Point 的 GeoJSON
 
 > 值得注意的是，返回的点要素是固定的，并非随机
 
