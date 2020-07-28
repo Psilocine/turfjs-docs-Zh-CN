@@ -42,6 +42,10 @@ module.exports = {
         {
           title: "MISC",
           path: "/misc/"
+        },
+        {
+          title: "辅助函数",
+          path: "/helper/"
         }
         // {
         //   title: "关系判断类",

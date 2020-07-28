@@ -222,7 +222,7 @@ var overlapping = turf.lineOverlap(line1, line2); // [125, -30], [135, -30] 线�
 
 > npm install @turf/line-segment
 
-接收一个线要素或面要素，创建 2-vertex 的线段要素集合
+接收一个线要素([LineString][linestring_link])或面要素([Polygon][polygon_link])，创建 2-vertex 的线段要素集合
 
 **参数**
 
@@ -253,7 +253,7 @@ var segments = turf.lineSegment(polygon);
 
 > npm install @turf/line-slice
 
-接收一条线要素、起点、终点，裁切起终点之间的在该线的线段并返回
+接收一条线要素([LineString][linestring_link])、起点、终点，裁切起终点之间的在该线的线段并返回
 
 > 值得注意的是，起点终点不需要在线上，会计算出点到线最近的点
 
@@ -290,7 +290,7 @@ var sliced = turf.lineSlice(start, stop, line); // 返回裁切的线段GeoJSON
 
 > npm install @turf/line-slice-along
 
-接收一条线要素、起点距离、终点距离，计算出沿起点在线上的指定距离、沿终点在线上的指定距离，裁切这两点之间的该线的线段并返回
+接收一条线要素([LineString][linestring_link])、起点距离、终点距离，计算出沿起点在线上的指定距离、沿终点在线上的指定距离，裁切这两点之间的该线的线段并返回
 
 > 值得注意的是，起点距离的点超过终点距离的点也没关系，只是坐标顺序相反而已
 
@@ -343,7 +343,7 @@ var sliced = turf.lineSliceAlong(line, start, stop, { units: "miles" });
 
 > npm install @turf/line-split
 
-接收一个线要素，一个用于裁切的任意要素，计算并返回裁切后的线要素集
+接收一个线要素([LineString][linestring_link])，一个用于裁切的任意要素([Feature][feature_link])，计算并返回裁切后的线要素集
 
 **参数**
 
@@ -548,7 +548,7 @@ var path = turf.shortestPath(start, end, options);
 
 > npm install @turf/unkink-polygon
 
-接收一个有自相交的面要素，计算并返回没有自相交的面要素集合，如果入参没有自相交，则返回入参数据的要素集
+接收一个有自相交的面要素([Polygon][polygon_link])，计算并返回没有自相交的面要素集合，如果入参没有自相交，则返回入参数据的要素集
 
 **参数**
 
