@@ -38,6 +38,10 @@ module.exports = {
         {
           title: "特征变换",
           path: "/feature_conversion/"
+        },
+        {
+          title: "MISC",
+          path: "/misc/"
         }
         // {
         //   title: "关系判断类",
