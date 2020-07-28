@@ -42,6 +42,14 @@ module.exports = {
         {
           title: "MISC",
           path: "/misc/"
+        },
+        {
+          title: "辅助函数",
+          path: "/helper/"
+        },
+        {
+          title: "随机函数",
+          path: "/random/"
         }
         // {
         //   title: "关系判断类",
