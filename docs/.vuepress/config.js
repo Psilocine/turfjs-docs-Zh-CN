@@ -24,7 +24,7 @@ module.exports = {
           path: "/start"
         },
         {
-          title: "测量类",
+          title: "测量函数",
           path: "/measurement/"
         },
         {
@@ -50,6 +50,18 @@ module.exports = {
         {
           title: "随机函数",
           path: "/random/"
+        },
+        {
+          title: "数据函数",
+          path: "/data/"
+        },
+        {
+          title: "插值函数",
+          path: "/interpolation/"
+        },
+        {
+          title: "JOINS",
+          path: "/joins/"
         }
         // {
         //   title: "关系判断类",
