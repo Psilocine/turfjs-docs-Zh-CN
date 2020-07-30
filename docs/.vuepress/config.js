@@ -66,6 +66,10 @@ module.exports = {
         {
           title: "网格辅助",
           path: "/grids/"
+        },
+        {
+          title: "CLASSIFICATION",
+          path: "/classification/"
         }
         // {
         //   title: "关系判断类",
