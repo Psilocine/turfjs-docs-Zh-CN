@@ -7,5 +7,8 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
-  "license": "GPL"
+  "license": "GPL",
+  "dependencies": {
+    "vuepress-plugin-helper-live2d": "^1.0.2"
+  }
 }
