@@ -74,11 +74,11 @@ module.exports = {
         {
           title: "聚合函数",
           path: "/aggregation/"
+        },
+        {
+          title: "关系判断",
+          path: "/booleans/"
         }
-        // {
-        //   title: "关系判断类",
-        //   path: "/booleans/"
-        // },
         // {
         //   title: "单位换算类",
         //   path: "/unit_conversion/"
