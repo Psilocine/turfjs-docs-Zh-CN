@@ -76,13 +76,17 @@ module.exports = {
           path: "/aggregation/"
         },
         {
+          title: "ASSERTIONS",
+          path: "/assertions/"
+        },
+        {
           title: "关系判断",
           path: "/booleans/"
+          // },
+          // {
+          //   title: "单位换算",
+          //   path: "/unit_conversion/"
         }
-        // {
-        //   title: "单位换算类",
-        //   path: "/unit_conversion/"
-        // }
       ]
     }
   },
