@@ -76,6 +76,10 @@ module.exports = {
           path: "/aggregation/"
         },
         {
+          title: "ASSERTIONS",
+          path: "/assertions/"
+        },
+        {
           title: "关系判断",
           path: "/booleans/"
         }
