@@ -17,9 +17,9 @@
 
 **options**
 
-| 属性   | 类型    | 默认值 | 描述                          |
-| ------ | ------- | ------ | ----------------------------- |
-| mutate | Boolean | false  | 入参的 GeoJSON 是否一起作修改 |
+| 属性   | 类型    | 默认值 | 描述                   |
+| ------ | ------- | ------ | ---------------------- |
+| mutate | Boolean | false  | 是否返回入参的 GeoJSON |
 
 **返回**
 
@@ -634,11 +634,11 @@ var offsetLine = turf.lineOffset(line, 2, { units: "miles" });
 
 **options**
 
-| 属性        | 类型    | 默认值 | 描述                                                         |
-| ----------- | ------- | ------ | ------------------------------------------------------------ |
-| tolerance   | Number  | 1      | 简化公差                                                     |
-| highQuality | Boolean | false  | 是否花费更多时间使用其他算法来创建更高质量的简化             |
-| mutate      | Boolean | false  | 入参的 GeoJSON 是否一起作修改。如果为 true，则可显着提高性能 |
+| 属性        | 类型    | 默认值 | 描述                                                  |
+| ----------- | ------- | ------ | ----------------------------------------------------- |
+| tolerance   | Number  | 1      | 简化公差                                              |
+| highQuality | Boolean | false  | 是否花费更多时间使用其他算法来创建更高质量的简化      |
+| mutate      | Boolean | false  | 是否返回入参的 GeoJSON。如果为 true，则可显着提高性能 |
 
 **返回**
 
@@ -747,10 +747,10 @@ var triangles = turf.tesselate(poly); // 裁剪成四个三角形要素
 
 **options**
 
-| 属性   | 类型                | 默认值     | 描述                                                         |
-| ------ | ------------------- | ---------- | ------------------------------------------------------------ |
-| pivot  | [Coord][coord_link] | "centroid" | 围绕旋转的中心点                                             |
-| mutate | Boolean             | false      | 入参的 GeoJSON 是否一起作修改。如果为 true，则可显着提高性能 |
+| 属性   | 类型                | 默认值     | 描述                                                  |
+| ------ | ------------------- | ---------- | ----------------------------------------------------- |
+| pivot  | [Coord][coord_link] | "centroid" | 围绕旋转的中心点                                      |
+| mutate | Boolean             | false      | 是否返回入参的 GeoJSON。如果为 true，则可显着提高性能 |
 
 **返回**
 
@@ -805,11 +805,11 @@ var rotatedPoly = turf.transformRotate(poly, 10, options);
 
 **options**
 
-| 属性         | 类型    | 默认值       | 描述                                                         |
-| ------------ | ------- | ------------ | ------------------------------------------------------------ |
-| units        | String  | "kilometers" | 单位，可选的有 degrees、radians、miles、kilometers           |
-| zTranslation | Number  | 0            | 垂直移动的距离                                               |
-| mutate       | Boolean | false        | 入参的 GeoJSON 是否一起作修改。如果为 true，则可显着提高性能 |
+| 属性         | 类型    | 默认值       | 描述                                                  |
+| ------------ | ------- | ------------ | ----------------------------------------------------- |
+| units        | String  | "kilometers" | 单位，可选的有 degrees、radians、miles、kilometers    |
+| zTranslation | Number  | 0            | 垂直移动的距离                                        |
+| mutate       | Boolean | false        | 是否返回入参的 GeoJSON。如果为 true，则可显着提高性能 |
 
 **返回**
 
@@ -867,7 +867,7 @@ var translatedPoly = turf.transformTranslate(poly, 100, 35);
 | 属性   | 类型                        | 默认值     | 描述                                                                 |
 | ------ | --------------------------- | ---------- | -------------------------------------------------------------------- |
 | origin | String\|[Coord][coord_link] | "centroid" | 缩放的中心点，如果是 String 的话，选项有 sw/se/nw/ne/center/centroid |
-| mutate | Boolean                     | false      | 入参的 GeoJSON 是否一起作修改。如果为 true，则可显着提高性能         |
+| mutate | Boolean                     | false      | 是否返回入参的 GeoJSON。如果为 true，则可显着提高性能                |
 
 **返回**
 
