@@ -10,7 +10,10 @@ module.exports = {
     lastUpdated: "Last Updated",
     nav: [
       { text: "Home", link: "/" },
-      { text: "Github", link: "https://github.com/Psilocine/turfjs-docs-Zh-CN" },
+      {
+        text: "Github",
+        link: "https://github.com/Psilocine/turfjs-docs-Zh-CN"
+      },
       { text: "官方文档", link: "http://turfjs.org/" }
     ],
     sidebar: {
@@ -74,6 +77,10 @@ module.exports = {
         {
           title: "聚合函数",
           path: "/aggregation/"
+        },
+        {
+          title: "META",
+          path: "/meta/"
         },
         {
           title: "ASSERTIONS",
