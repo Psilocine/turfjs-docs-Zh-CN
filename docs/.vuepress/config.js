@@ -1,7 +1,22 @@
 module.exports = {
   title: "Turf.js 文档",
   description: "Turfjs Zh CN",
-  head: [["link", { rel: "icon", href: "/images/favicon.ico" }]],
+  head: [
+    ["link", { rel: "icon", href: "/images/favicon.ico" }],
+    [
+      "script",
+      {},
+      `
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?5424894a2dcc6da42c7be98684597ffc";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      `
+    ]
+  ],
   base: "/turfjs-docs-Zh-CN/",
   markdown: {
     lineNumbers: false // 代码块显示行号
